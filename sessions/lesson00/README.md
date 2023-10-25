@@ -14,9 +14,6 @@ This session was primarily focusing on:
 Im Laufe der Vorlesung werden wir uns immer wieder im _Terminal_ ( etwa Git bash, dem Terminal eurer IDE, also etwa von VSCode oder IntellIJ ) befinden und müssen uns deswegen **grundlegend zurechtfinden können**.
 Das heißt, dass wir folgend Dateien **Erstellen**, **Verschieben**, **Bearbeiten** können und uns auch in den Orndern zurechtfinden, also etwa Wissen **wie wir relativ zum derzeitigen Punkt** weiter in einen Ordner kommen oder aus ihm heraus gehen können.
 
-### Basic Commands:
-Below I will list some basic commands that are fundamental to navigate the terminal and work with it. 
-
 >[!important] 
 > Pressing **TAB** (Tabulator Taste) can suggest you the next step to take in a command. 
 > For example we can get a list of all available files in the current directory if we write `cd **press tab twice**` or autocomplete a path we began writing, such as `cd Dow**Tab twice** --> cd Downloads/`
@@ -79,15 +76,20 @@ ls ../
 [evelyn@Scattered-Are15 test_repo]$ ls ../
 README.md  terminal_test  test_repo  understandinGit
 
-
 cat ../../../slides/191.06_lesson00.md 
 -> we are using "../" to navigate "one step back" 
 and this 3 times because we went into 3 folders (in comparison to our starting point)
 and then navigate ( we only look! not move ) _into the folder_ "slides" once more
 ```
 
+>[!tip]
+>../ can be chained so we could potentially move back many many folders to access something.
+> this means we could technically do smth like 
+> ` ls ../../../../../../../../?` to get somewhere far far back in our filessytem.
+> however this can get tedious fast and we would better move to the previous folder with "cd" and then go on. 
+
 ### Root what?:
-Now this gave us a short idea on how to navigate **relatively**. 
+Now this gave us a short idea on how to navigate **relatively**.
 
 If we want to travel / navigate **absolute** we always need a **reference point** that denotes _start of our filesystem_.
 This means that at this point everything else is "contained in it". 
@@ -108,7 +110,8 @@ There's another cool idea that we can use to navigate the terminal.
 Remember how we used "the root" as **absolute reference point** before? Well always going from "the root" of the whole filesystem is tedious and somewhat annoying. 
 So what, if we could navigate "the root" in "reference of our active user"?
 
-This means that the _new root_ is now denoted by the _folder_ where all files that belong to me are contained in. 
+This means that the _new root_ is now denoted by the _folder_ where all files that belong to me are contained in.
+
 
 **To use this position as reference for navigating files** we can use the following prefix to our paths:
 ` ~/`
@@ -119,10 +122,47 @@ before:
 after:
 ~/tech-cluster/Programming/course_software_engineering/SE_tutorial_material/sessions/lesson00/test_repo
 ```
-
 Well in this case this did not change much but it can be useful because we have a point to start from we know.
 
-## Moving basics: 
+Consider the following structure: 
+```
+/home/evelyn/
+├── Arduino
+├── cs
+├── data
+├── Desktop
+├── Documents -> Nextcloud/Documents/
+├── Downloads
+├── game_idea_1_sketch.png
+├── kitty.conf
+├── Music
+├── Nextcloud
+├── Pictures -> Nextcloud/Pictures/
+├── project
+├── Public
+├── qmk_branches
+├── qmk_firmware
+├── target
+├── tech-cluster -> Nextcloud/tech-cluster/
+├── test
+└── Zotero
+```
+Right now we will be omitting whatever goes on with "tech-cluster", "Documents" and "Pictures" ( those are symlinks for those interested ^^).
+
+Consider that I wanted to move to "Desktop":
+So `cd Desktop` it is. Alternatively if we were somewhere else deep deep we could also write:
+` cd ~/Desktop`. 
+
+So once we are in "~/Desktop", how can we reach "Nextcloud" ( the folder positioned in my Home directory )?
+Well with the same command as before: 
+` cd ~/Nextcloud/` 
+**or in a more tedous way**:
+`cd` _(cd on its own will always bring you back your home directory!)_
+`cd Nextcloud`
+
+So yea many ways to navigate are possible, but with a reference to our _home directory_ it can get a little easier most of the time :). 
+
+## Moving basics:
 
 We've now seen things like "../" that help us navigate "backwards". 
 Another cool thing to use ( for example for `tree .` ) is ".". This dot means that we want to "use the command on the current directory". 
