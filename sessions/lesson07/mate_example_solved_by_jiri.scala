@@ -1,5 +1,8 @@
 // this file was written and provided by jiribenes 
 // 
+// **Important**
+// this is one of **many possible** solutions
+// and one could implement / incorporate it differently too
 
 import scala.io.Source
 
